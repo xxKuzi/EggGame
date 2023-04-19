@@ -33,7 +33,7 @@ public class GoogleAdMobController : MonoBehaviour
     public void Start()
     {
         rewardedAdButton.gameObject.GetComponent<Image>().enabled = false;
-        //MobileAds.SetiOSAppPauseOnBackground(true);
+        MobileAds.SetiOSAppPauseOnBackground(true);
 
         List<String> deviceIds = new List<String>() { AdRequest.TestDeviceSimulator };
 
@@ -49,10 +49,10 @@ public class GoogleAdMobController : MonoBehaviour
             new RequestConfiguration.Builder()
             .SetTagForChildDirectedTreatment(TagForChildDirectedTreatment.Unspecified)
             .SetTestDeviceIds(deviceIds).build();
-//        MobileAds.SetRequestConfiguration(requestConfiguration);
+        MobileAds.SetRequestConfiguration(requestConfiguration);
 
         // Initialize the Google Mobile Ads SDK.
-//        MobileAds.Initialize(HandleInitCompleteAction);
+        MobileAds.Initialize(HandleInitCompleteAction);
 
         // Listen to application foreground / background events.
         //AppStateEventNotifier.AppStateChanged += OnAppStateChanged;

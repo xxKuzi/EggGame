@@ -14,8 +14,5 @@ public class ResolutionScale : MonoBehaviour
            PlayerPrefs.SetInt("scale", (int)Scale);
        }
 
-       private void Update()
-       {
-           Debug.Log(Scale);
-       }
+       
 }

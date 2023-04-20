@@ -20,9 +20,7 @@ public class AdButtonScript : MonoBehaviour
 
     void RewardedButtonClick()
     {
-        Debug.Log("SHOWING REWARDED AD");
         GoogleAdMobController.Instance.ShowRewardedAd();
-        
     }
     
 

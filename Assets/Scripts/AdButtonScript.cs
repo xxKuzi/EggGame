@@ -12,7 +12,6 @@ public class AdButtonScript : MonoBehaviour
 
     private void Awake()
     {
-        PlayerPrefs.GetInt("rewarded", 0);
         gameObject.GetComponent<Image>().enabled = false; 
         
         gameObject.GetComponent<Button>().onClick.AddListener(RewardedButtonClick);

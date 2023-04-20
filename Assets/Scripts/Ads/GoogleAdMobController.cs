@@ -49,6 +49,7 @@ public class GoogleAdMobController : MonoBehaviour
 
     void NormalStart()
     {
+        PlayerPrefs.SetInt("rewarded", 0);
         FindButton();
         MobileAds.SetiOSAppPauseOnBackground(true);
         

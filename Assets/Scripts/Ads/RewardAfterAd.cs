@@ -33,8 +33,6 @@ public class RewardAfterAd : MonoBehaviour
         }
         else
         {
-            Debug.Log("NOT GAMEMENu");
-            GoogleAdMobController.Instance.DestroyBannerAd();
             GoogleAdMobController.Instance.HideBannerAd();
         }
 

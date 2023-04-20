@@ -19,37 +19,45 @@ public class Buttons : MonoBehaviour
     }
     public void Play()
     {
-        JoinGame();
+        JoinGameMusic();
         
         Sound();
         SceneManager.LoadScene("Game");        
-    }
+    } 
+    //GAME MENU
     public void GameMenu()
     {
         Sound();
-        SceneManager.LoadScene("GameMenu");
+        LoadGameMenu();
+       
     }    
     public void ExitGame()
     {
         Sound();
-        LeaveGame();                
-        SceneManager.LoadScene("GameMenu");        
+        LeaveGameMusic();                
+        LoadGameMenu();       
     }
     
     public void ExitGameNoSoundAd()
     {
-        LeaveGame();        
+        LeaveGameMusic();        
         PlayerPrefs.SetInt("InAd",PlayerPrefs.GetInt("InAd") + 1);
-        SceneManager.LoadScene("GameMenu");
+        LoadGameMenu();
 
     }
-      
-    public void JoinGame()
+
+    void LoadGameMenu()
+    {
+        SceneManager.LoadScene("GameMenu");
+        
+    }
+//GAME MENU
+    public void JoinGameMusic()
     {
         SoundManager.Instance.Stop();
         SoundManager.Instance.PlayMusic("game");
     }
-    public void LeaveGame()
+    public void LeaveGameMusic()
     {
         SoundManager.Instance.Stop();
         SoundManager.Instance.PlayMusic("menu");

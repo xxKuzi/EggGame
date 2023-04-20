@@ -124,7 +124,7 @@ public class PopUp : MonoBehaviour
         if (gIndex == "lowMoneyGame")
         {
             CodeNull();
-            buttonsScript.LeaveGame();
+            buttonsScript.LeaveGameMusic();
             SceneManager.LoadScene("GameMenu");
 
             
@@ -141,7 +141,7 @@ public class PopUp : MonoBehaviour
         if(gIndex == "lowMoneyGame")
         {
             CodeNull();
-            buttonsScript.LeaveGame();
+            buttonsScript.LeaveGameMusic();
             SceneManager.LoadScene("Store");
 
             

@@ -17,24 +17,39 @@ public class GoogleAdMobController : MonoBehaviour
     private RewardedAd rewardedAd;
     private RewardedInterstitialAd rewardedInterstitialAd;
     private float deltaTime;
-    public UnityEvent OnAdLoadedEvent;
+    public UnityEvent OnAdLoadedEvent; 
     public UnityEvent OnAdFailedToLoadEvent;
     public UnityEvent OnAdOpeningEvent;
     public UnityEvent OnAdFailedToShowEvent;
     public UnityEvent OnUserEarnedRewardEvent;
     public UnityEvent OnAdClosedEvent;
     
-    public static GoogleAdMobController AdmobManager;
+    public static GoogleAdMobController Instance;
     public RewardAfterAd rewardAfterAd;
     [SerializeField] Button rewardedAdButton;
 
     #region UNITY MONOBEHAVIOR METHODS
 
+    private void Awake()
+    {
+        if(Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            GoogleAdMobController.Instance.FindButton();
+        }    
+        else {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        
+    }
+
     public void Start()
     {
-        rewardedAdButton.gameObject.GetComponent<Image>().enabled = false;
+        FindButton();
         MobileAds.SetiOSAppPauseOnBackground(true);
-
+        rewardedAdButton.gameObject.GetComponent<Image>().enabled = false;
+        
         List<String> deviceIds = new List<String>() { AdRequest.TestDeviceSimulator };
 
         // Add some test device IDs (replace with your own device IDs).
@@ -57,13 +72,20 @@ public class GoogleAdMobController : MonoBehaviour
         // Listen to application foreground / background events.
         //AppStateEventNotifier.AppStateChanged += OnAppStateChanged;
 
-        AdmobManager = this;
-
+        
+        
+        RequestBannerAd();
         RequestAndLoadInterstitialAd();
         RequestAndLoadRewardedAd();
-        RequestBannerAd();
+        
+        
     }
 
+    public void FindButton()
+    {
+        
+        rewardedAdButton = GameObject.FindGameObjectWithTag("AdsRewardedButton").GetComponent<Button>();
+    }
     private void HandleInitCompleteAction(InitializationStatus initstatus)
     {
         //Debug.Log("Initialization complete.");
@@ -241,79 +263,6 @@ public class GoogleAdMobController : MonoBehaviour
                 };
             });
         
-    }
-    public void RequestAndLoadInterstitialAdandLoad()
-    {
-        //PrintStatus("Requesting Interstitial ad.");
-
-#if UNITY_EDITOR
-        string adUnitId = "ca-app-pub-1939823438286538/7028659730"; //string adUnitId = "unused";
-#elif UNITY_ANDROID
-        string adUnitId = "ca-app-pub-1939823438286538/7028659730";
-#elif UNITY_IPHONE
-        string adUnitId = "ca-app-pub-3940256099942544/4411468910";
-#else
-        string adUnitId = "unexpected_platform";
-#endif
-
-        // Clean up interstitial before using it
-        if (interstitialAd != null)
-        {
-            interstitialAd.Destroy();
-        }
-
-        // Load an interstitial ad
-        InterstitialAd.Load(adUnitId, CreateAdRequest(),
-            (InterstitialAd ad, LoadAdError loadError) =>
-            {
-                if (loadError != null)
-                {
-                    //PrintStatus("Interstitial ad failed to load with error: " +
-                        //loadError.GetMessage());
-                    return;
-                }
-                else if (ad == null)
-                {
-                    //PrintStatus("Interstitial ad failed to load.");
-                    return;
-                }
-
-                //PrintStatus("Interstitial ad loaded.");
-                interstitialAd = ad;
-
-                ad.OnAdFullScreenContentOpened += () =>
-                {
-                    //PrintStatus("Interstitial ad opening.");
-                    OnAdOpeningEvent.Invoke();
-                };
-                ad.OnAdFullScreenContentClosed += () =>
-                {
-                    //PrintStatus("Interstitial ad closed.");
-                    OnAdClosedEvent.Invoke();
-                };
-                ad.OnAdImpressionRecorded += () =>
-                {
-                    //PrintStatus("Interstitial ad recorded an impression.");
-                };
-                ad.OnAdClicked += () =>
-                {
-                    //PrintStatus("Interstitial ad recorded a click.");
-                };
-                ad.OnAdFullScreenContentFailed += (AdError error) =>
-                {
-                    //PrintStatus("Interstitial ad failed to show with error: " +
-                                //error.GetMessage());
-                };
-                ad.OnAdPaid += (AdValue adValue) =>
-                {
-                    string msg = string.Format("{0} (currency: {1}, value: {2}",
-                                               "Interstitial ad received a paid event.",
-                                               adValue.CurrencyCode,
-                                               adValue.Value);
-                    //PrintStatus(msg);
-                };
-            });
-        ShowInterstitialAd();
     }
 
     public void ShowInterstitialAd()

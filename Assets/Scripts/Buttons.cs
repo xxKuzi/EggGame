@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -49,9 +50,12 @@ public class Buttons : MonoBehaviour
     void LoadGameMenu()
     {
         SceneManager.LoadScene("GameMenu");
-        
+        // GoogleAdMobController.Instance.HideBannerAd();
     }
 //GAME MENU
+
+
+
     public void JoinGameMusic()
     {
         SoundManager.Instance.Stop();

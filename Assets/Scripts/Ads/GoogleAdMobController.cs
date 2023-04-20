@@ -9,6 +9,7 @@ using System.Collections.Generic;
 
 public class GoogleAdMobController : MonoBehaviour
 {
+
     private readonly TimeSpan APPOPEN_TIMEOUT = TimeSpan.FromHours(4);
     private DateTime appOpenExpireTime;
     private AppOpenAd appOpenAd;
@@ -25,12 +26,15 @@ public class GoogleAdMobController : MonoBehaviour
     public UnityEvent OnAdClosedEvent;
     
     public static GoogleAdMobController Instance;
-    public RewardAfterAd rewardAfterAd;
+    [SerializeField] RewardAfterAd rewardAfterAd;
     [SerializeField] Button rewardedAdButton;
 
     #region UNITY MONOBEHAVIOR METHODS
 
-    private void Awake()
+    
+    
+
+    public void Awake()
     {
         if(Instance != null && Instance != this)
         {
@@ -42,10 +46,6 @@ public class GoogleAdMobController : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         }
         
-    }
-
-    public void Start()
-    {
         FindButton();
         MobileAds.SetiOSAppPauseOnBackground(true);
         rewardedAdButton.gameObject.GetComponent<Image>().enabled = false;
@@ -72,12 +72,12 @@ public class GoogleAdMobController : MonoBehaviour
         // Listen to application foreground / background events.
         //AppStateEventNotifier.AppStateChanged += OnAppStateChanged;
 
+
+
+        Debug.Log("google awake");
         
-        
-        RequestBannerAd();
-        RequestAndLoadInterstitialAd();
         RequestAndLoadRewardedAd();
-        
+        RequestAndLoadInterstitialAd();
         
     }
 
@@ -113,6 +113,7 @@ public class GoogleAdMobController : MonoBehaviour
 
     #region BANNER ADS
 
+    
     public void RequestBannerAd()
     {
         //PrintStatus("Requesting Banner ad.");
@@ -174,11 +175,17 @@ public class GoogleAdMobController : MonoBehaviour
                                         adValue.Value);
             //PrintStatus(msg);
         };
-
+        //ShowBannerAd();
         // Load a banner ad
         bannerView.LoadAd(CreateAdRequest());
     }
+    
+    public void HideBannerAd()
+    {
+        bannerView.Hide();
+    }
 
+    
     public void DestroyBannerAd()
     {
         if (bannerView != null)
@@ -228,6 +235,7 @@ public class GoogleAdMobController : MonoBehaviour
                 }
 
                 //PrintStatus("Interstitial ad loaded.");
+                Debug.Log("ad was loaded");
                 interstitialAd = ad;
 
                 ad.OnAdFullScreenContentOpened += () =>
@@ -275,6 +283,8 @@ public class GoogleAdMobController : MonoBehaviour
         {
             //PrintStatus("Interstitial ad is not ready yet.");
         }
+
+        Invoke("RequestAndLoadInterstitialAd", 2);
     }
 
     public void DestroyInterstitialAd()

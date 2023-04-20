@@ -12,34 +12,36 @@ public class RewardAfterAd : MonoBehaviour
 
     private void OnEnable()
     {
-        Invoke("AfterStart",0.1f);
+        Invoke("DelayerStart", 0.1f);
     }
 
-    void AfterStart()
+    void DelayerStart()
     {
-        if (SceneManager.GetActiveScene().name == "GameMenu")
+        
+        if (GoogleAdMobController.Instance != null)
         {
+            if (SceneManager.GetActiveScene().name == "GameMenu")
+            {
+                GoogleAdMobController.Instance.FindButton();
+                GoogleAdMobController.Instance.RequestBannerAd();    
+                if (PlayerPrefs.GetInt("InAd") >= 3)
+                {
+                    Debug.Log("INTERSITIAL AD");
+                    GoogleAdMobController.Instance.ShowInterstitialAd();
+                    PlayerPrefs.SetInt("InAd", 0);
+                }
+            
+            }
+            else
+            {
+                GoogleAdMobController.Instance.HideBannerAd();
             
                 
-            GoogleAdMobController.Instance.RequestBannerAd();    
-            
-        
-            if (PlayerPrefs.GetInt("InAd") == 3)
-            {
-                GoogleAdMobController.Instance.ShowInterstitialAd();
-                PlayerPrefs.SetInt("InAd", 0);
-            }
-            
+            }   
         }
-        else
-        {
-            GoogleAdMobController.Instance.HideBannerAd();
-        }
+    }
 
-    }
+   
     
-    public void Coins(int coins)
-    {
-        PlayerPrefs.SetInt("coins", PlayerPrefs.GetInt("coins") + coins);
-    }
+    
 }

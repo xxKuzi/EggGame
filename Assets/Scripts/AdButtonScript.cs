@@ -12,6 +12,8 @@ public class AdButtonScript : MonoBehaviour
 
     private void Awake()
     {
+        PlayerPrefs.GetInt("rewarded", 0);
+        gameObject.GetComponent<Image>().enabled = false; 
         
         gameObject.GetComponent<Button>().onClick.AddListener(RewardedButtonClick);
         
@@ -19,7 +21,9 @@ public class AdButtonScript : MonoBehaviour
 
     void RewardedButtonClick()
     {
+        Debug.Log("SHOWING REWARDED AD");
         GoogleAdMobController.Instance.ShowRewardedAd();
+        
     }
     
 

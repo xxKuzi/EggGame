@@ -26,7 +26,6 @@ public class GoogleAdMobController : MonoBehaviour
     public UnityEvent OnAdClosedEvent;
     
     public static GoogleAdMobController Instance;
-    [SerializeField] RewardAfterAd rewardAfterAd;
     [SerializeField] Button rewardedAdButton;
 
     #region UNITY MONOBEHAVIOR METHODS
@@ -39,16 +38,20 @@ public class GoogleAdMobController : MonoBehaviour
         if(Instance != null && Instance != this)
         {
             Destroy(gameObject);
-            GoogleAdMobController.Instance.FindButton();
         }    
         else {
             Instance = this;
             DontDestroyOnLoad(gameObject);
+            NormalStart();
         }
-        
+    }
+    
+
+    void NormalStart()
+    {
         FindButton();
         MobileAds.SetiOSAppPauseOnBackground(true);
-        rewardedAdButton.gameObject.GetComponent<Image>().enabled = false;
+        
         
         List<String> deviceIds = new List<String>() { AdRequest.TestDeviceSimulator };
 
@@ -62,8 +65,8 @@ public class GoogleAdMobController : MonoBehaviour
         // Configure TagForChildDirectedTreatment and test device IDs.
         RequestConfiguration requestConfiguration =
             new RequestConfiguration.Builder()
-            .SetTagForChildDirectedTreatment(TagForChildDirectedTreatment.Unspecified)
-            .SetTestDeviceIds(deviceIds).build();
+                .SetTagForChildDirectedTreatment(TagForChildDirectedTreatment.Unspecified)
+                .SetTestDeviceIds(deviceIds).build();
         MobileAds.SetRequestConfiguration(requestConfiguration);
 
         // Initialize the Google Mobile Ads SDK.
@@ -74,17 +77,29 @@ public class GoogleAdMobController : MonoBehaviour
 
 
 
-        Debug.Log("google awake");
+        
+        
         
         RequestAndLoadRewardedAd();
         RequestAndLoadInterstitialAd();
-        
+    }
+    void AddCoins(int coins)
+    {
+        PlayerPrefs.SetInt("coins", PlayerPrefs.GetInt("coins") + coins);
     }
 
     public void FindButton()
     {
-        
         rewardedAdButton = GameObject.FindGameObjectWithTag("AdsRewardedButton").GetComponent<Button>();
+        if (PlayerPrefs.GetInt("rewarded") == 1)
+        {
+            rewardedAdButton.gameObject.GetComponent<Image>().enabled = true;
+        }
+        else
+        {
+            rewardedAdButton.gameObject.GetComponent<Image>().enabled = false;    
+        }
+        
     }
     private void HandleInitCompleteAction(InitializationStatus initstatus)
     {
@@ -235,7 +250,6 @@ public class GoogleAdMobController : MonoBehaviour
                 }
 
                 //PrintStatus("Interstitial ad loaded.");
-                Debug.Log("ad was loaded");
                 interstitialAd = ad;
 
                 ad.OnAdFullScreenContentOpened += () =>
@@ -319,7 +333,7 @@ public class GoogleAdMobController : MonoBehaviour
                 if (loadError != null)
                 {
                     //PrintStatus("Rewarded ad failed to load with error: " +
-                                //loadError.GetMessage());
+                    //loadError.GetMessage());
                     return;
                 }
                 else if (ad == null)
@@ -329,7 +343,13 @@ public class GoogleAdMobController : MonoBehaviour
                 }
 
                 //PrintStatus("Rewarded ad loaded.");
-                rewardedAdButton.gameObject.GetComponent<Image>().enabled = true;
+                if (SceneManager.GetActiveScene().name == "GameMenu")
+                {
+                    FindButton();          
+                }
+                PlayerPrefs.SetInt("rewarded", 1);
+                
+                
                 rewardedAd = ad;
 
                 ad.OnAdFullScreenContentOpened += () =>
@@ -366,23 +386,25 @@ public class GoogleAdMobController : MonoBehaviour
             });
     }
 
+    
     public void ShowRewardedAd()
     {
         rewardedAdButton.gameObject.GetComponent<Image>().enabled = false;
-        RequestAndLoadRewardedAd();
+        PlayerPrefs.SetInt("rewarded", 0);
         if (rewardedAd != null)
         {
             rewardedAd.Show((Reward reward) =>
             {
                 
-                rewardAfterAd.Coins(Convert.ToInt32(reward.Amount));
-                RequestAndLoadRewardedAd();
+                AddCoins(Convert.ToInt32(reward.Amount));
+                
                 
             });
+            RequestAndLoadRewardedAd();
         }
         else
         {
-            
+            RequestAndLoadRewardedAd();
         }
     }
 /*

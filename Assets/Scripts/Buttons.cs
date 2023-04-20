@@ -21,7 +21,7 @@ public class Buttons : MonoBehaviour
     public void Play()
     {
         JoinGameMusic();
-        
+        GoogleAdMobController.Instance.RequestAndLoadRewardedAd();
         Sound();
         SceneManager.LoadScene("Game");        
     } 

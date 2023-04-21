@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -15,6 +16,9 @@ public class PlayerCollision : MonoBehaviour
     [SerializeField] TextMeshProUGUI scoreText;
     [SerializeField] TextMeshProUGUI coinsText;
     [SerializeField] Transform coin;
+    [SerializeField] private GameObject dia;
+    [SerializeField] private GameObject specialCoin;
+    [SerializeField] private GameObject droppingCoin;
     [SerializeField] Transform player;
     [SerializeField] Transform camera1;
     [SerializeField] Transform background;
@@ -35,6 +39,12 @@ public class PlayerCollision : MonoBehaviour
     int secondsRemain;
     int defSecondRemain = 3;
     bool allowDeath = true;
+    Vector2 diaPosition;
+    private Vector2 droppingCoinPosition;
+    private int diaSpawnFrequency;
+    private int diaSpawnCounter;
+    private int diaRandomCounter;
+    private int droppingCoinCounter;
 
     public PopUp popUpScript;
 
@@ -52,6 +62,8 @@ public class PlayerCollision : MonoBehaviour
         deathMenu.gameObject.SetActive(false);
         circleTimer.gameObject.SetActive(false);
         RefreshAlivePriceText();
+        DiaSpawnReset();
+        
     }
 
     private void Update()
@@ -98,10 +110,48 @@ public class PlayerCollision : MonoBehaviour
         if (collision.gameObject.CompareTag("Coin"))
         {
             SoundManager.Instance.Play("coin");
-            GetCoin();
+            GetCoin("normal");
             Destroy(collision.gameObject);
+            
+            //DIA SPAWNING
+            diaSpawnCounter++;
+
+            if (diaSpawnCounter == diaSpawnFrequency)
+            {
+                Spawn("dia");
+                DiaSpawnReset();
+            }
+
         }
 
+        
+
+        if (collision.gameObject.CompareTag("SpecialCoin"))
+        {
+            Spawn("droppingCoin");
+            GetCoin("normal");
+            Destroy(collision.gameObject);
+            droppingCoinCounter++;
+        }
+
+        if (collision.gameObject.CompareTag("DroppingCoin"))
+        {
+            Destroy(collision.gameObject);
+            GetCoin("normal");
+
+            droppingCoinCounter++;
+            if (droppingCoinCounter <= 5)
+            {
+                Spawn("droppingCoin");
+            }
+            else
+            {
+                droppingCoinCounter = 0;
+            }
+            
+        }
+        
+        
         if (collision.gameObject.CompareTag("Dia"))
         {
             SoundManager.Instance.Play("dia");
@@ -109,18 +159,74 @@ public class PlayerCollision : MonoBehaviour
             Destroy(collision.gameObject);
         }
 
-    }
-    void GetCoin()
-    {
-        coins++;
-        PlayerPrefs.SetInt("coins", PlayerPrefs.GetInt("coins") + 1);
-        coinsText.text = "Coins: " + coins;
-    }
+        
 
+    }
+    
+    private void DiaSpawnReset()
+    {
+        diaSpawnFrequency = Random.Range(1, 3) + Random.Range(1, 3) + Random.Range(1, 4);
+        diaSpawnCounter = 0;
+    }
+    void GetCoin(string property)
+    {
+        switch (property)
+        {
+            case ("normal"):
+                coins++;
+                PlayerPrefs.SetInt("coins", PlayerPrefs.GetInt("coins") + 1);
+                coinsText.text = "Coins: " + coins;
+                break;
+
+            case ("special"):
+                coins += 3;
+                PlayerPrefs.SetInt("coins", PlayerPrefs.GetInt("coins") + 3);
+                coinsText.text = "Coins: " + coins;
+                break;
+        }
+
+    }
     void GetDia()
     {
         PlayerPrefs.SetInt("Dia", PlayerPrefs.GetInt("dia") + 1);
     }
+
+    void Spawn(string thing)
+    {
+        switch (thing)
+        {
+            case ("droppingCoin"):
+            {
+                float xSpawnpostion = player.position.x + Random.Range(-3, 3);
+                bool inRange = Enumerable.Range(-3, 3).Contains((int)xSpawnpostion);
+                while (inRange == false)
+                {
+                    xSpawnpostion = player.position.x + Random.Range(-3, 3);
+                    inRange = Enumerable.Range(-3, 3).Contains((int)xSpawnpostion);
+                }
+                
+                
+                
+                droppingCoinPosition = new Vector2(xSpawnpostion, player.position.y + 10);
+                Instantiate(droppingCoin, droppingCoinPosition, Quaternion.identity);
+                
+                break;
+            }
+            
+            
+            case ("dia"):
+            {
+                diaPosition = new Vector2(player.position.x, player.position.y + 10);
+                Instantiate(dia, diaPosition, Quaternion.identity);        
+                
+                break;
+            }
+            
+        }
+        
+    }
+
+    
     void Paralyzed()
     {        
         GetComponent<BoxCollider2D>().isTrigger = false;

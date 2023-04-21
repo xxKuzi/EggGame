@@ -9,7 +9,8 @@ public class FloorGenerator : MonoBehaviour
 	[SerializeField] GameObject movingPlatformShoe;
 	[SerializeField] GameObject movingPlatform;
 	[SerializeField] GameObject dangerFloor;	
-	[SerializeField] GameObject coin;			
+	[SerializeField] GameObject coin;
+	[SerializeField] private GameObject specialCoin;
 	[SerializeField] GameObject shoes;			
 	[SerializeField] GameObject trampoline;		
 	[SerializeField] GameObject magnet;
@@ -24,6 +25,9 @@ public class FloorGenerator : MonoBehaviour
 	int shoeRate = 0; //Spawning rate
 
 	int coinSpawn;
+	private int specialCoinSpawn;
+	private int specialCoinSpawnFrequency;
+	
 	int trampolineSpawn;
 	int magnetSpawn;
 	bool magnetActualSpawn;
@@ -65,6 +69,7 @@ public class FloorGenerator : MonoBehaviour
 	Vector2 trampolinePosition = new Vector2();
 	void Start()
 	{
+		ResetSpecialCoinSpawnFrequency();
 		Spawn();
 	}
     private void Update()
@@ -75,7 +80,12 @@ public class FloorGenerator : MonoBehaviour
 			spawnHeight += defSpawnHeight;
         }			
     }
-    
+
+    void ResetSpecialCoinSpawnFrequency()
+    {
+	    specialCoinSpawnFrequency = Random.Range(1, 3) + Random.Range(1, 3) + Random.Range(1, 3);
+	    specialCoinSpawn = 0;
+    }
 	void Spawn()
 	{
 
@@ -104,7 +114,18 @@ public class FloorGenerator : MonoBehaviour
 				{
 					coinPosition.x = floorPosition.x;
 					coinPosition.y = floorPosition.y + 0.7f;
-					Instantiate(coin, coinPosition, Quaternion.identity);
+					specialCoinSpawn++;
+					if (specialCoinSpawn == specialCoinSpawnFrequency)
+					{
+						Instantiate(specialCoin, coinPosition, Quaternion.identity);
+						ResetSpecialCoinSpawnFrequency();
+					}
+					else
+					{
+						Instantiate(coin, coinPosition, Quaternion.identity);	
+					}
+					
+					
 					coinSpawn = 0;
 				}
 			}
@@ -136,10 +157,6 @@ public class FloorGenerator : MonoBehaviour
 
 
 			
-							
-			
-			
-
 
 		}
 
@@ -148,9 +165,6 @@ public class FloorGenerator : MonoBehaviour
 		for (int i = 0; i < nMovingFloor; i++)
 		{
 			
-
-			
-
 
 		}
 

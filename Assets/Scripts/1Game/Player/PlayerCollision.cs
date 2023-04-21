@@ -45,6 +45,8 @@ public class PlayerCollision : MonoBehaviour
     private int diaSpawnCounter;
     private int diaRandomCounter;
     private int droppingCoinCounter;
+    
+    int number;
 
     public PopUp popUpScript;
 
@@ -132,22 +134,15 @@ public class PlayerCollision : MonoBehaviour
             GetCoin("normal");
             Destroy(collision.gameObject);
             droppingCoinCounter++;
+            
         }
 
         if (collision.gameObject.CompareTag("DroppingCoin"))
         {
             Destroy(collision.gameObject);
-            GetCoin("normal");
+            GetCoin("special");
 
-            droppingCoinCounter++;
-            if (droppingCoinCounter <= 5)
-            {
-                Spawn("droppingCoin");
-            }
-            else
-            {
-                droppingCoinCounter = 0;
-            }
+            
             
         }
         
@@ -197,18 +192,13 @@ public class PlayerCollision : MonoBehaviour
         {
             case ("droppingCoin"):
             {
-                float xSpawnpostion = player.position.x + Random.Range(-3, 3);
-                bool inRange = Enumerable.Range(-3, 3).Contains((int)xSpawnpostion);
-                while (inRange == false)
-                {
-                    xSpawnpostion = player.position.x + Random.Range(-3, 3);
-                    inRange = Enumerable.Range(-3, 3).Contains((int)xSpawnpostion);
-                }
                 
                 
                 
-                droppingCoinPosition = new Vector2(xSpawnpostion, player.position.y + 10);
-                Instantiate(droppingCoin, droppingCoinPosition, Quaternion.identity);
+                    droppingCoinPosition = new Vector2(Random.Range(-5, 5), player.position.y + 17);
+                    Instantiate(droppingCoin, droppingCoinPosition, Quaternion.identity);    
+                
+                
                 
                 break;
             }
@@ -216,7 +206,7 @@ public class PlayerCollision : MonoBehaviour
             
             case ("dia"):
             {
-                diaPosition = new Vector2(player.position.x, player.position.y + 10);
+                diaPosition = new Vector2(player.position.x, player.position.y + 4);
                 Instantiate(dia, diaPosition, Quaternion.identity);        
                 
                 break;

@@ -9,7 +9,6 @@ public class PopUp : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI Headline;
     [SerializeField] private TextMeshProUGUI Message;
-    [SerializeField] ShopButton shopButton;
     [SerializeField] Buttons buttonsScript;
 
     [SerializeField] GameObject confirmButton;
@@ -105,12 +104,12 @@ public class PopUp : MonoBehaviour
         if(gIndex == "brown")
         {
             CodeNull();
-            shopButton.BuyBrown();
+            //shopButton.BuyBrown();
         }
         if(gIndex == "colored")
         {
             CodeNull();
-            shopButton.BuyColored();
+            //shopButton.BuyColored();
         }    
         CloseWindow();
     }

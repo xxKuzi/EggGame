@@ -13,7 +13,8 @@ public class FloorGenerator : MonoBehaviour
 	[SerializeField] GameObject shoes;			
 	[SerializeField] GameObject trampoline;		
 	[SerializeField] GameObject magnet;
-
+	
+	
 	[SerializeField] Transform player;
 
 
@@ -71,10 +72,10 @@ public class FloorGenerator : MonoBehaviour
         if(player.position.y >= spawnHeight)
         {
 			Spawn();
-			Debug.Log("spawn");
 			spawnHeight += defSpawnHeight;
         }			
     }
+    
 	void Spawn()
 	{
 

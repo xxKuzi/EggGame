@@ -23,7 +23,8 @@ public class Buttons : MonoBehaviour
         JoinGameMusic();
         GoogleAdMobController.Instance.RequestAndLoadRewardedAd();
         Sound();
-        SceneManager.LoadScene("Game");        
+        Screen.sleepTimeout = SleepTimeout.NeverSleep;
+        SceneManager.LoadScene("Game");
     } 
     //GAME MENU
     public void GameMenu()
@@ -50,7 +51,7 @@ public class Buttons : MonoBehaviour
     void LoadGameMenu()
     {
         SceneManager.LoadScene("GameMenu");
-        // GoogleAdMobController.Instance.HideBannerAd();
+        Screen.sleepTimeout = SleepTimeout.SystemSetting;
     }
 //GAME MENU
 

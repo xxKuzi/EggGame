@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,21 +6,26 @@ using TMPro;
 
 public class AliveCounter : MonoBehaviour
 {
-    static PlayerCollision playerCollision;
-    static TextMeshProUGUI counterText;
-    private void Start()
+    [SerializeField] PlayerCollision playerCollision;
+    [SerializeField] TextMeshProUGUI counterText;
+    
+
+    private void Awake()
     {
-        playerCollision = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerCollision>();
-        counterText = GameObject.FindGameObjectWithTag("AliveCounter").GetComponent<TextMeshProUGUI>();
-        
+        SetDisactive();
     }
-    public static void SetDisactive()
+
+    public void SetDisactive()
     {
         counterText.gameObject.SetActive(false);
+        
     }
-    public static IEnumerator TimeToStart()
+    
+    public IEnumerator TimeToStart()
     {
+        
         counterText.gameObject.SetActive(true);
+        
         int counter = 3;
 
         counterText.text = "" + counter;

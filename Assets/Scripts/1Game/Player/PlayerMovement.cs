@@ -55,7 +55,7 @@ public class PlayerMovement : MonoBehaviour
         coinDetector.SetActive(false);
         playerMagnet.SetActive(false);
         Application.targetFrameRate = 60;
-        Screen.sleepTimeout = SleepTimeout.NeverSleep;
+        
 
 
 

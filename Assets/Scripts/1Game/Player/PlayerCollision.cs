@@ -23,10 +23,15 @@ public class PlayerCollision : MonoBehaviour
     [SerializeField] Button bExit;
     [SerializeField] Button bAlive;
     [SerializeField] Transform safePlace;
-    public PlayerMovement playerMovement;
+    [SerializeField] PlayerMovement playerMovement;
+    [SerializeField] private AliveCounter aliveCounter;
     [SerializeField] Buttons buttonsScript;
     [SerializeField] Transform deathMenu;
     [SerializeField] TextMeshProUGUI deathTimer;
+    [SerializeField] private GameObject circleTimer;
+    [SerializeField] private TextMeshProUGUI alivePriceText;
+    private int aliveButtonClicked;
+    private int alivePrice = 5;
     int secondsRemain;
     int defSecondRemain = 3;
     bool allowDeath = true;
@@ -39,13 +44,14 @@ public class PlayerCollision : MonoBehaviour
 
     private void Start()
     {
-        AliveCounter.SetDisactive();
         popUpScript.CloseAtStart();
         secondsRemain = defSecondRemain;
         bResume.gameObject.SetActive(false);
         bExit.gameObject.SetActive(false);        
         safePlace.gameObject.SetActive(false);
         deathMenu.gameObject.SetActive(false);
+        circleTimer.gameObject.SetActive(false);
+        RefreshAlivePriceText();
     }
 
     private void Update()
@@ -96,12 +102,24 @@ public class PlayerCollision : MonoBehaviour
             Destroy(collision.gameObject);
         }
 
+        if (collision.gameObject.CompareTag("Dia"))
+        {
+            SoundManager.Instance.Play("dia");
+            GetDia();
+            Destroy(collision.gameObject);
+        }
+
     }
     void GetCoin()
     {
         coins++;
         PlayerPrefs.SetInt("coins", PlayerPrefs.GetInt("coins") + 1);
         coinsText.text = "Coins: " + coins;
+    }
+
+    void GetDia()
+    {
+        PlayerPrefs.SetInt("Dia", PlayerPrefs.GetInt("dia") + 1);
     }
     void Paralyzed()
     {        
@@ -122,6 +140,7 @@ public class PlayerCollision : MonoBehaviour
 
         DeathReset();
         deathMenu.gameObject.SetActive(true);
+        circleTimer.gameObject.SetActive(true);
         deathTimer.text = "" + secondsRemain;
         StartCoroutine(Dying());
         
@@ -202,19 +221,21 @@ public class PlayerCollision : MonoBehaviour
     {
         ButtonSound();
         deathMenu.gameObject.SetActive(false);
+        circleTimer.gameObject.SetActive(false);
         allowDeath = false;
 
-        if (PlayerPrefs.GetInt("coins") < 5)
+        if (PlayerPrefs.GetInt("coins") < alivePrice)
         {
             popUpScript.LowMoneyGame();
         }
         else
         {
-            coins -= 5;
+            coins -= alivePrice;
             coinsText.text = "Coins: " + coins;
-            PlayerPrefs.SetInt("coins", PlayerPrefs.GetInt("coins") - 5);
-            StartCoroutine(AliveCounter.TimeToStart());
+            PlayerPrefs.SetInt("coins", PlayerPrefs.GetInt("coins") - alivePrice);
+            StartCoroutine(aliveCounter.TimeToStart());
             ButtonSound();
+            AlivePriceChange();
 
             
             
@@ -236,9 +257,19 @@ public class PlayerCollision : MonoBehaviour
     {
 
         this.GetComponent<PlayerMovement>().enabled = true;
-
+        
     }
 
+    private void AlivePriceChange()
+    {
+        alivePrice = alivePrice * 2;
+        RefreshAlivePriceText();
+    }
+
+    private void RefreshAlivePriceText()
+    {
+        alivePriceText.text = alivePrice.ToString();
+    }
    
 
     void ResetBoosts()

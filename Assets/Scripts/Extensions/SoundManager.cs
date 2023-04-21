@@ -11,6 +11,7 @@ public class SoundManager : MonoBehaviour
     [SerializeField] public AudioClip jump;
     [SerializeField] public AudioClip death;    
     [SerializeField] public AudioClip coin;
+    [SerializeField] public AudioClip dia;
     
     [SerializeField] public AudioClip trampoline;
     [SerializeField] public AudioClip magnet;
@@ -85,6 +86,11 @@ public class SoundManager : MonoBehaviour
                 case "coin":
                     coinSource.PlayOneShot(coin);
                     break;
+                
+                case "dia":
+                    coinSource.PlayOneShot(dia);
+                    break;
+                
 
                 case "trampoline":
                     effectsSource.PlayOneShot(trampoline);

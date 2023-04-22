@@ -14,6 +14,6 @@ public class CoinsCalculator : MonoBehaviour
 
     void Update()
     {
-        coinsText.text = "" + PlayerPrefs.GetInt("coins"); 
+        coinsText.text = "" + PlayerPrefs.GetInt("coins");
     }
 }

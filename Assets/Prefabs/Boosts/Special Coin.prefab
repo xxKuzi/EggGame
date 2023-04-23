@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1359044575075594515}
   m_Layer: 0
   m_Name: Special Coin
-  m_TagString: SpecialCoin
+  m_TagString: RedBoxDrop
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28,8 +28,8 @@ Transform:
   m_GameObject: {fileID: 3172169337136142010}
   m_LocalRotation: {x: -0, y: 0.008726535, z: -0, w: 0.9999619}
   m_LocalPosition: {x: 6.3, y: -9.03, z: -0.21}
-  m_LocalScale: {x: 0.31748864, y: 0.3174886, z: 0.31748864}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.16, y: 0.16, z: 0.16}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -75,8 +75,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: fe2a94175a3d1fb438454dc68b0769a6, type: 3}
-  m_Color: {r: 0, g: 0.7924528, b: 0.6254155, a: 1}
+  m_Sprite: {fileID: 21300000, guid: d15495adfc3091645af3aab7177690cf, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -103,7 +103,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.37, y: 2.35}
+    oldSize: {x: 4.06, y: 10.44}
     newSize: {x: 2.37, y: 2.35}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

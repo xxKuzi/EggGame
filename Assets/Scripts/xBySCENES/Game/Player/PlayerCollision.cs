@@ -15,17 +15,14 @@ public class PlayerCollision : MonoBehaviour
     
     [SerializeField] TextMeshProUGUI scoreText;
     [SerializeField] TextMeshProUGUI coinsText;
-    [SerializeField] Transform coin;
     [SerializeField] private GameObject dia;
-    [SerializeField] private GameObject specialCoin;
-    [SerializeField] private GameObject droppingCoin;
+    [SerializeField] private GameObject redBox;
     [SerializeField] Transform player;
     [SerializeField] Transform camera1;
     [SerializeField] Transform background;
     [SerializeField] Button bPause;
     [SerializeField] Button bResume;
     [SerializeField] Button bExit;
-    [SerializeField] Button bAlive;
     [SerializeField] Transform safePlace;
     [SerializeField] PlayerMovement playerMovement;
     [SerializeField] private AliveCounter aliveCounter;
@@ -40,11 +37,12 @@ public class PlayerCollision : MonoBehaviour
     int defSecondRemain = 3;
     bool allowDeath = true;
     Vector2 diaPosition;
-    private Vector2 droppingCoinPosition;
+    
     private int diaSpawnFrequency;
     private int diaSpawnCounter;
     private int diaRandomCounter;
-    private int droppingCoinCounter;
+    private Vector2 redBoxPosition;
+    
     
     int number;
 
@@ -128,16 +126,16 @@ public class PlayerCollision : MonoBehaviour
 
         
 
-        if (collision.gameObject.CompareTag("SpecialCoin"))
+        if (collision.gameObject.CompareTag("RedBoxDrop"))
         {
-            Spawn("droppingCoin");
+            Spawn("RedBox");
             GetCoin("normal");
             Destroy(collision.gameObject);
-            droppingCoinCounter++;
+            
             
         }
 
-        if (collision.gameObject.CompareTag("DroppingCoin"))
+        if (collision.gameObject.CompareTag("RedBox"))
         {
             Destroy(collision.gameObject);
             GetCoin("special");
@@ -190,13 +188,11 @@ public class PlayerCollision : MonoBehaviour
     {
         switch (thing)
         {
-            case ("droppingCoin"):
+            case ("RedBoxDrop"):
             {
                 
-                
-                
-                    droppingCoinPosition = new Vector2(Random.Range(-5, 5), player.position.y + 17);
-                    Instantiate(droppingCoin, droppingCoinPosition, Quaternion.identity);    
+                    redBoxPosition = new Vector2(Random.Range(-5, 5), player.position.y + 17);
+                    Instantiate(redBox, redBoxPosition, Quaternion.identity);    
                 
                 
                 

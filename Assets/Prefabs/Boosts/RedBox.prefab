@@ -76,12 +76,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 9420ed5c91b4c7342a86720c8a6e53a7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 14db64f1dd8c50b469d6f1c14b8a8e64, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 2.37, y: 2.35}
+  m_Size: {x: 9.22, y: 9.14}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -105,7 +105,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 9.22, y: 9.14}
-    newSize: {x: 2.37, y: 2.35}
+    newSize: {x: 9.22, y: 9.14}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -125,6 +125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62ce9a2cbac78c64c8f18eadead4310e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  coinRotate: 0
   player: {fileID: 0}
   xRotation: 50
 --- !u!50 &7581651644113772301

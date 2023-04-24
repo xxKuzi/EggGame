@@ -9,19 +9,19 @@ public class PlayerMovement : MonoBehaviour
 {
     
     [SerializeField] GameObject player;
-    public Rigidbody2D rb;
+    [HideInInspector] public Rigidbody2D rb;
 
     
-    float jumpForce = 25;
+    [HideInInspector] float jumpForce = 25;
     float defJumpForce;    
-    public float defGravitation = 40;
+    [HideInInspector] public float defGravitation = 40;
     private float move;
-    public float gravity;
+    [HideInInspector] public float gravity;
     bool isJump = false;
 
     [SerializeField] Transform egg;
     int timeForceJump = 5;
-    public int shoeActive = 0;
+    [HideInInspector] public int shoeActive = 0;
 
     public PlayerCollision playerCollision;
 
@@ -34,7 +34,7 @@ public class PlayerMovement : MonoBehaviour
     int magnetActive = 0;
 
     float moveSpeed = 20;
-    public float moveX;
+    [HideInInspector] public float moveX;
 
     
     private float sideDistance;
@@ -108,7 +108,7 @@ public class PlayerMovement : MonoBehaviour
         if (collision.gameObject.CompareTag("Trampoline"))
         {
 
-            SoundManager.Instance.Play("trampoline");
+            //SoundManager.Instance.Play("trampoline");
             jumpForce = 50;
             Jump();
             
@@ -122,14 +122,14 @@ public class PlayerMovement : MonoBehaviour
         
         if (collision.gameObject.CompareTag("Shoe"))
         {
-            SoundManager.Instance.Play("shoes");
+            //SoundManager.Instance.Play("shoes");
             Destroy(collision.gameObject);           
             StartCoroutine(ShoesActive());                       
             
         }
         if (collision.gameObject.CompareTag("Magnet"))
         {
-            SoundManager.Instance.Play("magnet");
+            //SoundManager.Instance.Play("magnet");
             StartCoroutine(ActiveDetector());            
             Destroy(collision.gameObject);
 
@@ -159,7 +159,7 @@ public class PlayerMovement : MonoBehaviour
     }
     void Jump()
     {
-        SoundManager.Instance.Play("jump");
+        //SoundManager.Instance.Play("jump");
         rb.velocity = new Vector2(rb.velocity.x, jumpForce);
     }  
     IEnumerator ShoesActive()

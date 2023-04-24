@@ -11,9 +11,8 @@ GameObject:
   - component: {fileID: 6685920479006718547}
   - component: {fileID: 2352650916255009990}
   - component: {fileID: 2529359043636008081}
-  - component: {fileID: 1359044575075594515}
   m_Layer: 0
-  m_Name: Special Coin
+  m_Name: RedBoxDrop
   m_TagString: RedBoxDrop
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -112,17 +111,3 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.9534351, y: 1.8130944}
   m_EdgeRadius: 0
---- !u!114 &1359044575075594515
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3172169337136142010}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62ce9a2cbac78c64c8f18eadead4310e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  xRotation: 50

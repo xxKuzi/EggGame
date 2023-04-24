@@ -6,12 +6,11 @@ public class FloorGenerator : MonoBehaviour
 {
 
 	[SerializeField] GameObject floor;
-	[SerializeField] GameObject movingPlatformShoe;
+	[SerializeField] GameObject movingPlatformShoe;		//this is the object the Shoe is spawned with
 	[SerializeField] GameObject movingPlatform;
 	[SerializeField] GameObject dangerFloor;	
 	[SerializeField] GameObject coin;
-	[SerializeField] private GameObject specialCoin;
-	[SerializeField] GameObject shoes;			
+	[SerializeField] private GameObject redBoxDrop;
 	[SerializeField] GameObject trampoline;		
 	[SerializeField] GameObject magnet;
 	
@@ -117,7 +116,7 @@ public class FloorGenerator : MonoBehaviour
 					specialCoinSpawn++;
 					if (specialCoinSpawn == specialCoinSpawnFrequency)
 					{
-						Instantiate(specialCoin, coinPosition, Quaternion.identity);
+						Instantiate(redBoxDrop, coinPosition, Quaternion.identity);
 						ResetSpecialCoinSpawnFrequency();
 					}
 					else

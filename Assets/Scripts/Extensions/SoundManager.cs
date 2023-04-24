@@ -12,7 +12,9 @@ public class SoundManager : MonoBehaviour
     [SerializeField] public AudioClip death;    
     [SerializeField] public AudioClip coin;
     [SerializeField] public AudioClip dia;
-    
+    //[SerializeField] public AudioClip
+    //[SerializeField] public AudioClip
+        
     [SerializeField] public AudioClip trampoline;
     [SerializeField] public AudioClip magnet;
     [SerializeField] public AudioClip shoes;
@@ -68,50 +70,21 @@ public class SoundManager : MonoBehaviour
         gameSource.Stop();                        
     }
 
-    public void Play(string sound)
+    public void Play(AudioClip sound)
     {
-
+        
         if (PlayerPrefs.GetString("Effects") == "true")
         {
-            switch (sound)
+            if (sound == coin)
             {
-                case "button":
-                    effectsSource.PlayOneShot(button);
-                    break;
-
-                case "jump":
-                    effectsSource.PlayOneShot(jump);
-                    break;
-
-                case "coin":
-                    coinSource.PlayOneShot(coin);
-                    break;
-                
-                case "dia":
-                    coinSource.PlayOneShot(dia);
-                    break;
-                
-
-                case "trampoline":
-                    effectsSource.PlayOneShot(trampoline);
-                    break;
-                case "magnet":
-                    effectsSource.PlayOneShot(magnet);
-                    break;
-                case "shoes":
-                    effectsSource.PlayOneShot(shoes);
-                    break;
-                case "buy":
-                    effectsSource.PlayOneShot(buy);
-                    break;
-                case "equip":
-                    effectsSource.PlayOneShot(equip);
-                    break;
-
-                
-
-
+                coinSource.PlayOneShot(coin);
             }
+            else
+            {
+                effectsSource.PlayOneShot(sound);    
+            }
+            // make volume changing here in script instead of two sources(effectSource, coinSource)
+            
         }
         
     }

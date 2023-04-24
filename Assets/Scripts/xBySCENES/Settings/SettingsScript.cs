@@ -167,6 +167,6 @@ public class SettingsScript : MonoBehaviour
     }
     void Sound() //Button Sound
     {
-        SoundManager.Instance.Play("button");
+        //SoundManager.Instance.Play("button");
     }
 }

@@ -31,6 +31,7 @@ public class PlayerCollision : MonoBehaviour
     [SerializeField] TextMeshProUGUI deathTimer;
     [SerializeField] private GameObject circleTimer;
     [SerializeField] private TextMeshProUGUI alivePriceText;
+    [SerializeField] private GameObject pauseBackground;
     private int aliveButtonClicked;
     private int alivePrice = 5;
     int secondsRemain;
@@ -61,6 +62,7 @@ public class PlayerCollision : MonoBehaviour
         safePlace.gameObject.SetActive(false);
         deathMenu.gameObject.SetActive(false);
         circleTimer.gameObject.SetActive(false);
+        pauseBackground.SetActive(false);
         RefreshAlivePriceText();
         DiaSpawnReset();
         
@@ -109,7 +111,7 @@ public class PlayerCollision : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Coin"))
         {
-            SoundManager.Instance.Play("coin");
+            //SoundManager.Instance.Play("coin");
             GetCoin("normal");
             Destroy(collision.gameObject);
             
@@ -128,28 +130,30 @@ public class PlayerCollision : MonoBehaviour
 
         if (collision.gameObject.CompareTag("RedBoxDrop"))
         {
+            //SoundManager.Instance.Play("RedBoxDrop");
             Spawn("RedBox");
             GetCoin("normal");
             Destroy(collision.gameObject);
             
-            
+
+
         }
 
         if (collision.gameObject.CompareTag("RedBox"))
         {
+            //SoundManager.Instance.Play(RedBox);
             Destroy(collision.gameObject);
             GetCoin("special");
 
-            
-            
         }
         
         
         if (collision.gameObject.CompareTag("Dia"))
         {
-            SoundManager.Instance.Play("dia");
+            //SoundManager.Instance.Play(diaSound);
             GetDia();
             Destroy(collision.gameObject);
+            
         }
 
         
@@ -188,15 +192,14 @@ public class PlayerCollision : MonoBehaviour
     {
         switch (thing)
         {
-            case ("RedBoxDrop"):
+            case ("RedBox"):
             {
                 
                     redBoxPosition = new Vector2(Random.Range(-5, 5), player.position.y + 17);
-                    Instantiate(redBox, redBoxPosition, Quaternion.identity);    
-                
-                
-                
-                break;
+                    Instantiate(redBox, redBoxPosition, Quaternion.identity);
+
+
+                    break;
             }
             
             
@@ -219,7 +222,7 @@ public class PlayerCollision : MonoBehaviour
     }
     void Die()
     {
-        SoundManager.Instance.Play("death");
+        //SoundManager.Instance.Play("death");
         cameraMove = false;
         if (score > PlayerPrefs.GetFloat("score")) { PlayerPrefs.SetFloat("score", score); }
         
@@ -284,6 +287,7 @@ public class PlayerCollision : MonoBehaviour
         bPause.gameObject.SetActive(false);
         bResume.gameObject.SetActive(true);
         bExit.gameObject.SetActive(true);
+        pauseBackground.SetActive(true);
         if (score > PlayerPrefs.GetFloat("score")) PlayerPrefs.SetFloat("score", score);
 
         GetComponent<BoxCollider2D>().isTrigger = true;
@@ -299,6 +303,7 @@ public class PlayerCollision : MonoBehaviour
         bPause.gameObject.SetActive(true);
         bResume.gameObject.SetActive(false);
         bExit.gameObject.SetActive(false);
+        pauseBackground.SetActive(false);
 
         GetComponent<BoxCollider2D>().isTrigger = false;
         GetComponent<Rigidbody2D>().isKinematic = false;
@@ -376,7 +381,7 @@ public class PlayerCollision : MonoBehaviour
     }    
     void ButtonSound()
     {
-        SoundManager.Instance.Play("button");
+        //SoundManager.Instance.Play("button");
     }
     
 

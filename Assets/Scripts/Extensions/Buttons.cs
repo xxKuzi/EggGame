@@ -79,7 +79,7 @@ public class Buttons : MonoBehaviour
     }    
     void Sound()
     {
-        SoundManager.Instance.Play("button");
+        //SoundManager.Instance.Play("button");
     }    
 
 

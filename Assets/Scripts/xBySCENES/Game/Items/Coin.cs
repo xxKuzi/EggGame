@@ -6,6 +6,7 @@ public class Coin : MonoBehaviour
 {
     
     bool coinMove;
+    [SerializeField] private bool coinRotate = true;
     [SerializeField] Transform player;
     float moveSpeed = 15f; //TRY WITHOUT F
     
@@ -18,8 +19,12 @@ public class Coin : MonoBehaviour
         {
             transform.position = Vector3.MoveTowards(transform.position, player.position, moveSpeed * Time.deltaTime);
         }
-       
-        transform.Rotate(0, xRotation * Time.deltaTime, 0);
+
+        if (coinRotate)
+        {
+            transform.Rotate(0, xRotation * Time.deltaTime, 0);    
+        }
+        
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {

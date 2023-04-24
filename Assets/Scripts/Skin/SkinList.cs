@@ -23,6 +23,12 @@ public class SkinList : MonoBehaviour
 
     private void Start()
     {
+        RefreshSkins();
+
+    }
+
+    public void RefreshSkins()
+    {
         unlockedSkins = Database.skinUnlocked;
         noSkins = allSkins.Count;
         
@@ -44,6 +50,5 @@ public class SkinList : MonoBehaviour
         
         skinMenu.LockedSkins();
         skinselect.UpdateSkin();
-
     }
 }

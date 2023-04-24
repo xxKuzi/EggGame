@@ -7,8 +7,8 @@ using UnityEngine.SceneManagement;
 
 public class PopUp : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI Headline;
-    [SerializeField] private TextMeshProUGUI Message;
+    [SerializeField] private TextMeshProUGUI headline;
+    [SerializeField] private TextMeshProUGUI message;
     [SerializeField] Buttons buttonsScript;
 
     [SerializeField] GameObject confirmButton;
@@ -21,7 +21,7 @@ public class PopUp : MonoBehaviour
     [SerializeField] TextMeshProUGUI alternativeText;
 
     [SerializeField] Canvas popUpCanvas;
-    [SerializeField] Image newSkinImage;
+    [SerializeField] Image image;
     [SerializeField] private ReviewScript reviewscript;
     string gIndex;
     
@@ -38,20 +38,20 @@ public class PopUp : MonoBehaviour
     
     public void Sure(string index)
     {
-        popUpCanvas.gameObject.SetActive(true);
+        ActiveCanvas();
         if (index == "brown")
         {
-            Message.text = "Are you sure you want to buy " + index + " skin";
+            message.text = "Are you sure you want to buy " + index + " skin";
             gIndex = "brown";
         }
         if (index == "colored")
         {
-            Message.text = "Are you sure you want to buy " + index + " skin";
+            message.text = "Are you sure you want to buy " + index + " skin";
             gIndex = "colored";
         }
 
-        newSkinImage.gameObject.SetActive(true);
-        Headline.text = "Confirmation";        
+        image.gameObject.SetActive(true);
+        headline.text = "Confirmation";        
         confirmButton.SetActive(true);
         confirmText.text = "Yes";
         declineButton.SetActive(true);
@@ -66,9 +66,9 @@ public class PopUp : MonoBehaviour
     }
     public void LowMoney()
     {
-        popUpCanvas.gameObject.SetActive(true);
-        Headline.text = "Not enough Money";
-        Message.text = "You do not have enought money";
+        ActiveCanvas();
+        headline.text = "Not enough Money";
+        message.text = "You do not have enought money";
         okButton.SetActive(true);
         okText.text = "OK";
         alternativeButton.SetActive(true);
@@ -79,9 +79,9 @@ public class PopUp : MonoBehaviour
     }
     public void LowMoneyGame()
     {
-        popUpCanvas.gameObject.SetActive(true);
-        Headline.text = "Not enough Money";
-        Message.text = "You do not have enought money";
+        ActiveCanvas();
+        headline.text = "Not enough Money";
+        message.text = "You do not have enought money";
         okButton.SetActive(true);
         okText.text = "OK";
         alternativeButton.SetActive(true);
@@ -92,15 +92,45 @@ public class PopUp : MonoBehaviour
     }
     public void ColorEquip(string color)
     {
-        popUpCanvas.gameObject.SetActive(true);
-        Headline.text = "Color changed succesfully";
-        Message.text = "Color changed to " + color;
+        ActiveCanvas();
+        headline.text = "Color changed succesfully";
+        message.text = "Color changed to " + color;
         okButton.SetActive(true);
     }    
 
+    public void Review()
+    {
+        ActiveCanvas();
+        gIndex = "review";
+        headline.text = "Skin for Review";
+        message.text = "Review Egg Game on Play Store and get FREE SKIN";
+        confirmButton.SetActive(true);
+        confirmText.text = "Get Skin";
+        okButton.SetActive(true);
+        okText.text = "cancel";
+    }
+    
+    public void NewSkinUnlocked(int numberOfSkin)
+    {
+        ActiveCanvas();
+        image.gameObject.SetActive(true);
+        gIndex = "newSkinUnlocked";
+        message.text = "new Skin Unlocked";
+        headline.text = "New Skin";
+        okButton.SetActive(true);
+        okText.text = "ok";
+    }
+
+    private void ActiveCanvas()
+    {
+        popUpCanvas.gameObject.SetActive(true);
+    }
+    
+    
     //BUTTONs
     public void ConfirmButton()
     {
+        CloseWindow();
         if(gIndex == "brown")
         {
             CodeNull();
@@ -116,18 +146,12 @@ public class PopUp : MonoBehaviour
         {
             reviewscript.GoPage();
         }
-        CloseWindow();
+        
     }
 
-    public void Review()
-    {
-        popUpCanvas.gameObject.SetActive(true);
-        gIndex = "review";
-        confirmButton.SetActive(true);
-        confirmText.text = "Get Skin";
-        okButton.SetActive(true);
-        okText.text = "cancel";
-    }
+    
+
+    
     
     public void DeclineButton()
     {
@@ -178,7 +202,7 @@ public class PopUp : MonoBehaviour
         alternativeButton.SetActive(false);
         okButton.SetActive(false);
         popUpCanvas.gameObject.SetActive(false);
-        //newSkinImage.gameObject.SetActive(false);
+        image.gameObject.SetActive(false);
     }
     void CodeNull()
     {

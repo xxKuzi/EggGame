@@ -22,7 +22,8 @@ public class SaverJson : MonoBehaviour
         {
             Destroy(this);   
         }
-        Debug.Log(Application.persistentDataPath);
+        
+        //Debug.Log(Application.persistentDataPath);
         string dir = Application.persistentDataPath + directory;
         if(File.Exists(dir + fileName))
         {

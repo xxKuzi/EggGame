@@ -18,8 +18,9 @@ public class SkinMenu : MonoBehaviour
 
     public void Select(int number)
     {
+        Sound();
         PlayerPrefs.SetInt("skin", number);
-        openClose.CloseMenu();
+        openClose.CloseMenuNoSound();
     }
 
     
@@ -43,5 +44,10 @@ public class SkinMenu : MonoBehaviour
         }
         
            
+    }
+
+    void Sound()
+    {
+        AudioManager.Instance.Play("SkinEquip");
     }
 }

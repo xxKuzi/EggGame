@@ -14,8 +14,8 @@ public class SettingsScript : MonoBehaviour
     [SerializeField] TextMeshProUGUI musicsButtonText;
     [SerializeField] GameObject effectsButton;
     [SerializeField] TextMeshProUGUI effectsButtonText;
-
-    SoundManager soundManager;
+     
+    
     int fpsIndex;
     int musicIndex;
     int effectsIndex;
@@ -25,7 +25,6 @@ public class SettingsScript : MonoBehaviour
 
     private void Start()
     {
-        soundManager = GameObject.FindGameObjectWithTag("SoundManager").GetComponent<SoundManager>();
         fpsButtonColor = fpsButton.GetComponent<Image>();
         musicButtonColor = musicButton.GetComponent<Image>();
         effectsButtonColor = effectsButton.GetComponent<Image>();
@@ -135,9 +134,9 @@ public class SettingsScript : MonoBehaviour
         musicButtonColor.color = Color.green;
         PlayerPrefs.SetString("Music", "true");
         musicIndex = 1;
-        if(soundManager.menuSource.isPlaying == false)
+        if(false == false) //soundManager.menuSource.isPlaying
         {
-            soundManager.PlayMusic("menu");
+            AudioManager.Instance.Play("MenuMusic");
         }
         
         
@@ -145,7 +144,7 @@ public class SettingsScript : MonoBehaviour
     }
     void MusicFalse()
     {
-        soundManager.Stop();
+        AudioManager.Instance.Stop("MenuMusic");
         musicsButtonText.text = "OFF";
         musicButtonColor.color = Color.red;
         PlayerPrefs.SetString("Music", "false");
@@ -167,6 +166,6 @@ public class SettingsScript : MonoBehaviour
     }
     void Sound() //Button Sound
     {
-        //SoundManager.Instance.Play("button");
+        AudioManager.Instance.Play("Button");
     }
 }

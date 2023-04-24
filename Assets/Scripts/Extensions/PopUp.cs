@@ -21,14 +21,14 @@ public class PopUp : MonoBehaviour
     [SerializeField] TextMeshProUGUI alternativeText;
 
     [SerializeField] Canvas popUpCanvas;
-    [SerializeField] Image newSkinImage;    
+    [SerializeField] Image newSkinImage;
+    [SerializeField] private ReviewScript reviewscript;
     string gIndex;
     
 
     private void Start()
     {
-        popUpCanvas.gameObject.SetActive(false);
-        CloseWindow();
+        CloseAtStart();
     }
     public void CloseAtStart()
     {
@@ -110,9 +110,25 @@ public class PopUp : MonoBehaviour
         {
             CodeNull();
             //shopButton.BuyColored();
-        }    
+        }
+
+        if (gIndex == "review")
+        {
+            reviewscript.GoPage();
+        }
         CloseWindow();
     }
+
+    public void Review()
+    {
+        popUpCanvas.gameObject.SetActive(true);
+        gIndex = "review";
+        confirmButton.SetActive(true);
+        confirmText.text = "Get Skin";
+        okButton.SetActive(true);
+        okText.text = "cancel";
+    }
+    
     public void DeclineButton()
     {
         CloseWindow();

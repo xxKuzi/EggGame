@@ -108,7 +108,7 @@ public class PlayerMovement : MonoBehaviour
         if (collision.gameObject.CompareTag("Trampoline"))
         {
 
-            //SoundManager.Instance.Play("trampoline");
+            AudioManager.Instance.Play("Trampoline");
             jumpForce = 50;
             Jump();
             
@@ -122,14 +122,14 @@ public class PlayerMovement : MonoBehaviour
         
         if (collision.gameObject.CompareTag("Shoe"))
         {
-            //SoundManager.Instance.Play("shoes");
+            AudioManager.Instance.Play("Shoes");
             Destroy(collision.gameObject);           
             StartCoroutine(ShoesActive());                       
             
         }
         if (collision.gameObject.CompareTag("Magnet"))
         {
-            //SoundManager.Instance.Play("magnet");
+            AudioManager.Instance.Play("Magnet");
             StartCoroutine(ActiveDetector());            
             Destroy(collision.gameObject);
 
@@ -159,7 +159,7 @@ public class PlayerMovement : MonoBehaviour
     }
     void Jump()
     {
-        //SoundManager.Instance.Play("jump");
+        AudioManager.Instance.Play("Jump");
         rb.velocity = new Vector2(rb.velocity.x, jumpForce);
     }  
     IEnumerator ShoesActive()

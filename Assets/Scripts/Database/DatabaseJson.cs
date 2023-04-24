@@ -5,6 +5,6 @@ using System.Collections.Generic;
 public class DatabaseJson
 {
     
-    public List<bool> skinUnlocked = new List<bool>(new bool[3]);
+    public List<bool> skinUnlocked = new List<bool>(new bool[15]);
     public List<bool> boxBought = new List<bool>(new bool[5]);
 }

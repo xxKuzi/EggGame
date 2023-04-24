@@ -59,13 +59,22 @@ public class Buttons : MonoBehaviour
 
     public void JoinGameMusic()
     {
-        SoundManager.Instance.Stop();
-        SoundManager.Instance.PlayMusic("game");
+        if (PlayerPrefs.GetString("Music") == "true")
+        {
+            AudioManager.Instance.Stop("MenuMusic");
+            AudioManager.Instance.Play("GameMusic");    
+        }
+        
+        
     }
     public void LeaveGameMusic()
     {
-        SoundManager.Instance.Stop();
-        SoundManager.Instance.PlayMusic("menu");
+        if (PlayerPrefs.GetString("Music") == "true")
+        {
+            AudioManager.Instance.Play("MenuMusic");
+            AudioManager.Instance.Stop("GameMusic");    
+        }
+        
     }
     public void Settings()
     {
@@ -79,7 +88,7 @@ public class Buttons : MonoBehaviour
     }    
     void Sound()
     {
-        //SoundManager.Instance.Play("button");
+        AudioManager.Instance.Play("Button");
     }    
 
 

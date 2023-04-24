@@ -111,7 +111,7 @@ public class PlayerCollision : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Coin"))
         {
-            //SoundManager.Instance.Play("coin");
+            AudioManager.Instance.Play("Coin");
             GetCoin("normal");
             Destroy(collision.gameObject);
             
@@ -130,7 +130,8 @@ public class PlayerCollision : MonoBehaviour
 
         if (collision.gameObject.CompareTag("RedBoxDrop"))
         {
-            //SoundManager.Instance.Play("RedBoxDrop");
+            AudioManager.Instance.Play("RedBoxDrop");
+            //AudioManager.Instance.Play("RedBox");
             Spawn("RedBox");
             GetCoin("normal");
             Destroy(collision.gameObject);
@@ -141,7 +142,7 @@ public class PlayerCollision : MonoBehaviour
 
         if (collision.gameObject.CompareTag("RedBox"))
         {
-            //SoundManager.Instance.Play(RedBox);
+            AudioManager.Instance.Play("RedBoxCatch");
             Destroy(collision.gameObject);
             GetCoin("special");
 
@@ -150,7 +151,7 @@ public class PlayerCollision : MonoBehaviour
         
         if (collision.gameObject.CompareTag("Dia"))
         {
-            //SoundManager.Instance.Play(diaSound);
+            AudioManager.Instance.Play("Dia");
             GetDia();
             Destroy(collision.gameObject);
             
@@ -222,14 +223,14 @@ public class PlayerCollision : MonoBehaviour
     }
     void Die()
     {
-        //SoundManager.Instance.Play("death");
+        AudioManager.Instance.Play("Death");
         cameraMove = false;
         if (score > PlayerPrefs.GetFloat("score")) { PlayerPrefs.SetFloat("score", score); }
         
         
         playerMovement.moveX = 0;
         playerMovement.rb.velocity = new Vector2(0, 0);
-        this.GetComponent<PlayerMovement>().enabled = false;
+        GetComponent<PlayerMovement>().enabled = false;
  
 
 
@@ -381,7 +382,7 @@ public class PlayerCollision : MonoBehaviour
     }    
     void ButtonSound()
     {
-        //SoundManager.Instance.Play("button");
+        AudioManager.Instance.Play("Button");
     }
     
 

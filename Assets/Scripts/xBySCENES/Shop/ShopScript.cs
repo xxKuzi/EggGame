@@ -44,6 +44,7 @@ public class ShopScript : MonoBehaviour
         if (PlayerPrefs.GetInt("coins") > prices[boxNumber]) //write it reversely
 
         {
+            ButtonSound();
             PlayerPrefs.SetInt("coins", PlayerPrefs.GetInt("coins") - prices[boxNumber]);
             
             UnlockSkin(skinNumber[boxNumber]);
@@ -78,7 +79,10 @@ public class ShopScript : MonoBehaviour
 
     //(PlayerPrefs.GetInt("coins")
 
-    
+    void ButtonSound()
+    {
+        AudioManager.Instance.Play("Button");
+    }
 
     
 }

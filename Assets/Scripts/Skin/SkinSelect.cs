@@ -39,6 +39,7 @@ public class SkinSelect : MonoBehaviour
     }
     public void NextButton()
     {
+        Sound();
         selectedSkin = selectedSkin - 1;
 
         if(selectedSkin < 0)
@@ -53,6 +54,7 @@ public class SkinSelect : MonoBehaviour
     }
     public void BackButton()
     {
+        Sound();
         selectedSkin = selectedSkin + 1;
         
         if(selectedSkin == skins.Count)
@@ -66,6 +68,10 @@ public class SkinSelect : MonoBehaviour
         
     }
 
+    void Sound()
+    {
+        AudioManager.Instance.Play("SkinToSide");
+    }
     void RefreshSkins()
     {
         img.sprite = skins[selectedSkin];

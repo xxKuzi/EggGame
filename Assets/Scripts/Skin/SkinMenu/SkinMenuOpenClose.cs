@@ -15,8 +15,15 @@ public class SkinMenuOpenClose : MonoBehaviour
       blur.SetActive(false);
    }
 
+   public void CloseMenuNoSound()
+   {
+      skinSelect.UpdateSkin();
+      skinMenu.SetActive(false);
+      blur.SetActive(false);
+   }
    public void CloseMenu()
    {
+      Sound();
       skinSelect.UpdateSkin();
       skinMenu.SetActive(false);
       blur.SetActive(false);
@@ -24,7 +31,13 @@ public class SkinMenuOpenClose : MonoBehaviour
 
    public void OpenMenu()
    {
+      Sound();
       skinMenu.SetActive(true);
       blur.SetActive(true);
+   }
+
+   void Sound()
+   {
+      AudioManager.Instance.Play("Button");
    }
 }

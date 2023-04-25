@@ -17,6 +17,7 @@ public class SkinList : MonoBehaviour
     [SerializeField] public List<int> indexInUnlockedSkins = new List<int>();
     private int numberOfCycle;
     
+    
     [HideInInspector] public int noSkins;
 
    
@@ -24,7 +25,6 @@ public class SkinList : MonoBehaviour
     private void Start()
     {
         RefreshSkins();
-
     }
 
     public void RefreshSkins()
@@ -33,7 +33,14 @@ public class SkinList : MonoBehaviour
         noSkins = allSkins.Count;
         
         
+        //CLEARING SKIN SELECT LIST (BECAUSE IT HAS TO BE DONE WHEN WE REFRESHING SKINS)
+        skinselect.skins.Clear();
+        //CLEARING NUMBER OF CYCLES (BECAUSE IT HAS TO BE DONE WHEN WE REFRESHING SKINS)
+        numberOfCycle = 0; 
         
+        
+        
+        //ADDING SKINS TO SKIN SELECT + INDEXING THEM
         for (int i = 0; i < noSkins; i++)
         {
             if (unlockedSkins[i] == true)

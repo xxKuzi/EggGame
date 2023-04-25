@@ -30,6 +30,7 @@ public class SkinMenu : MonoBehaviour
         for (int i = 0; i < skinList.noSkins; i++)
         {
             lockList[i].SetActive(false);
+            buttonsList[i].enabled = true;
         }
         
         
@@ -40,6 +41,7 @@ public class SkinMenu : MonoBehaviour
             {
                 buttonsList[i].enabled = false;
                 lockList[i].SetActive(true);
+                Debug.Log("LOCk" + i);
             }    
         }
         

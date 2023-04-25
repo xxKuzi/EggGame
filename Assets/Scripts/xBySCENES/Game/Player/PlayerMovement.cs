@@ -18,12 +18,10 @@ public class PlayerMovement : MonoBehaviour
     private float move;
     [HideInInspector] public float gravity;
     bool isJump = false;
-
-    [SerializeField] Transform egg;
+    
     int timeForceJump = 5;
     [HideInInspector] public int shoeActive = 0;
-
-    public PlayerCollision playerCollision;
+    
 
     [SerializeField] GameObject shoes;
 
@@ -51,7 +49,6 @@ public class PlayerMovement : MonoBehaviour
         gravity = -defGravitation;
         shoes.SetActive(false);
         defJumpForce = jumpForce;
-        egg.GetComponent<SpriteRenderer>().enabled = false;
         coinDetector.SetActive(false);
         playerMagnet.SetActive(false);
         Application.targetFrameRate = 60;

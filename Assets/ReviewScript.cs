@@ -25,7 +25,7 @@ public class ReviewScript : MonoBehaviour
 
     public void GoPage()
     {
-        Application.OpenURL ("market://details?id=" + Application.productName);
+        Application.OpenURL ("https://play.google.com/store/apps/details?id=com.juicyy.jumpgame");
         GetReward();
     }
     public void GetReward()

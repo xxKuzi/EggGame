@@ -175,14 +175,19 @@ UnityEngine.Application::get_isBatchMode
 UnityEngine.Application::get_isFocused
 UnityEngine.Application::get_isPlaying
 UnityEngine.Application::get_persistentDataPath
+UnityEngine.Application::OpenURL
 UnityEngine.Application::set_targetFrameRate
 UnityEngine.Application::get_platform
 UnityEngine.AsyncOperation::InternalDestroy
 UnityEngine.AudioSettings::StartAudioOutput
 UnityEngine.AudioSettings::StopAudioOutput
 UnityEngine.AudioSource::get_isPlaying
+UnityEngine.AudioSource::PlayHelper
 UnityEngine.AudioSource::PlayOneShotHelper
+UnityEngine.AudioSource::SetPitch
 UnityEngine.AudioSource::Stop
+UnityEngine.AudioSource::set_clip
+UnityEngine.AudioSource::set_volume
 UnityEngine.Behaviour::get_enabled
 UnityEngine.Behaviour::get_isActiveAndEnabled
 UnityEngine.Behaviour::set_enabled
@@ -590,6 +595,7 @@ UnityEngine.PlayerPrefs::TrySetSetString
 UnityEngine.PlayerPrefs::GetInt
 UnityEngine.PlayerPrefs::GetFloat
 UnityEngine.PlayerPrefs::GetString
+UnityEngine.PlayerPrefs::DeleteAll
 UnityEngine.PropertyNameUtils::PropertyNameFromString_Injected
 UnityEngine.QualitySettings::get_vSyncCount
 UnityEngine.QualitySettings::get_activeColorSpace

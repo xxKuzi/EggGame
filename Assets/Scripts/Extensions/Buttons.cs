@@ -11,7 +11,7 @@ public class Buttons : MonoBehaviour
     
     private void Start()
     {
-        //PlayerPrefs.DeleteAll();
+        PlayerPrefs.DeleteAll();
     }
     public void Shop()
     {

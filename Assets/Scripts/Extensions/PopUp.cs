@@ -90,13 +90,7 @@ public class PopUp : MonoBehaviour
 
 
     }
-    public void ColorEquip(string color)
-    {
-        ActiveCanvas();
-        headline.text = "Color changed succesfully";
-        message.text = "Color changed to " + color;
-        okButton.SetActive(true);
-    }    
+      
 
     public void Review()
     {
@@ -113,6 +107,7 @@ public class PopUp : MonoBehaviour
     public void NewSkinUnlocked(int numberOfSkin)
     {
         ActiveCanvas();
+        AudioManager.Instance.Play("NewSkin");
         image.gameObject.SetActive(true);
         gIndex = "newSkinUnlocked";
         message.text = "new Skin Unlocked";

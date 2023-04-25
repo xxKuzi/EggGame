@@ -40,8 +40,7 @@ public class SkinMenu : MonoBehaviour
             if (skinList.unlockedSkins[i] == false)
             {
                 buttonsList[i].enabled = false;
-                lockList[i].SetActive(true);
-                Debug.Log("LOCk" + i);
+                lockList[i].SetActive(true);              
             }    
         }
         

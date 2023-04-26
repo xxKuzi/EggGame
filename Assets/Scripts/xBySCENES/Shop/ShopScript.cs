@@ -13,7 +13,7 @@ public class ShopScript : MonoBehaviour
     [SerializeField] private List<TextMeshProUGUI> buttonsText = new List<TextMeshProUGUI>();
 
     [SerializeField] private List<bool> boxBought = new List<bool>();
-    [SerializeField] private List<int> skinNumber = new List<int>();
+    [SerializeField] public List<int> skinNumber = new List<int>();
 
     
 

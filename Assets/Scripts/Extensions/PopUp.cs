@@ -23,7 +23,10 @@ public class PopUp : MonoBehaviour
     [SerializeField] Canvas popUpCanvas;
     [SerializeField] Image image;
     [SerializeField] private ReviewScript reviewscript;
+    [SerializeField] private ShopScript shopScript;
+    private int skinNumber;
     string gIndex;
+    private int boxNumber;
     
 
     private void Start()
@@ -36,19 +39,48 @@ public class PopUp : MonoBehaviour
         CloseWindow();
     }
     
-    public void Sure(string index)
+    
+    
+    // public void Sure(string index)
+    // {
+    //     ActiveCanvas();
+    //     
+    //     message.text = "Are you sure you want to buy " + index + " skin";
+    //
+    //     gIndex = "Buy" + index;
+    //     
+    //     
+    //
+    //     image.gameObject.SetActive(true);
+    //     headline.text = "Confirmation";        
+    //     confirmButton.SetActive(true);
+    //     confirmText.text = "Yes";
+    //     declineButton.SetActive(true);
+    //     declineText.text = "No";
+    //     okButton.SetActive(true);
+    //     okText.text = "cancel";
+    //     //gIndex = "sure";
+    //     
+    //
+    //
+    //
+    // }
+    
+    public void BuySkinBox(int boxNumber2)
     {
+        
         ActiveCanvas();
-        if (index == "brown")
-        {
-            message.text = "Are you sure you want to buy " + index + " skin";
-            gIndex = "brown";
-        }
-        if (index == "colored")
-        {
-            message.text = "Are you sure you want to buy " + index + " skin";
-            gIndex = "colored";
-        }
+        boxNumber = boxNumber2;
+        skinNumber = shopScript.skinNumber[boxNumber];
+        string skinName = SkinNames.skin[skinNumber];
+        
+        message.text = "Are you sure you want to buy " + skinName + " skin?";
+
+
+        
+        
+        
+        
 
         image.gameObject.SetActive(true);
         headline.text = "Confirmation";        
@@ -56,9 +88,8 @@ public class PopUp : MonoBehaviour
         confirmText.text = "Yes";
         declineButton.SetActive(true);
         declineText.text = "No";
-        okButton.SetActive(true);
-        okText.text = "cancel";
-        //gIndex = "sure";
+        
+        gIndex = "buySkin";
         
 
 
@@ -126,16 +157,13 @@ public class PopUp : MonoBehaviour
     public void ConfirmButton()
     {
         CloseWindow();
-        if(gIndex == "brown")
+        
+        if(gIndex == "buySkin")
         {
-            CodeNull();
-            //shopButton.BuyBrown();
+            shopScript.BuySkin(boxNumber);
+            
         }
-        if(gIndex == "colored")
-        {
-            CodeNull();
-            //shopButton.BuyColored();
-        }
+        
 
         if (gIndex == "review")
         {

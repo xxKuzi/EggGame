@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -19,8 +20,7 @@ public class PopUp : MonoBehaviour
     [SerializeField] TextMeshProUGUI okText;
     [SerializeField] GameObject alternativeButton;
     [SerializeField] TextMeshProUGUI alternativeText;
-
-    [SerializeField] Canvas popUpCanvas;
+    
     [SerializeField] Image image;
     [SerializeField] private ReviewScript reviewscript;
     [SerializeField] private ShopScript shopScript;
@@ -35,7 +35,7 @@ public class PopUp : MonoBehaviour
     }
     public void CloseAtStart()
     {
-        popUpCanvas.gameObject.SetActive(false);
+        gameObject.SetActive(false);
         CloseWindow();
     }
     
@@ -97,6 +97,7 @@ public class PopUp : MonoBehaviour
     }
     public void LowMoney()
     {
+        Debug.Log("LowMoney");
         ActiveCanvas();
         headline.text = "Not enough Money";
         message.text = "You do not have enought money";
@@ -149,19 +150,20 @@ public class PopUp : MonoBehaviour
 
     private void ActiveCanvas()
     {
-        popUpCanvas.gameObject.SetActive(true);
+        gameObject.SetActive(true);
     }
     
     
     //BUTTONs
     public void ConfirmButton()
     {
-        CloseWindow();
         
+        CloseWindow();
         if(gIndex == "buySkin")
         {
+            Debug.Log(boxNumber);
             shopScript.BuySkin(boxNumber);
-            
+            Debug.Log("BuySkin");
         }
         
 
@@ -170,12 +172,11 @@ public class PopUp : MonoBehaviour
             reviewscript.GoPage();
         }
         
+        
     }
 
     
 
-    
-    
     public void DeclineButton()
     {
         CloseWindow();
@@ -200,9 +201,13 @@ public class PopUp : MonoBehaviour
     }
     public void AlternativeButton()
     {
+        if (gIndex == "lowMoney")
+        {
+            SceneManager.LoadScene("Store");
+        }
         if(gIndex == "lowMoneyGame")
         {
-            CodeNull();
+            
             buttonsScript.LeaveGameMusic();
             SceneManager.LoadScene("Store");
 
@@ -224,7 +229,7 @@ public class PopUp : MonoBehaviour
         declineButton.SetActive(false);
         alternativeButton.SetActive(false);
         okButton.SetActive(false);
-        popUpCanvas.gameObject.SetActive(false);
+        gameObject.SetActive(false);
         image.gameObject.SetActive(false);
     }
     void CodeNull()

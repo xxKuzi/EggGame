@@ -14,6 +14,7 @@ public class ShopScript : MonoBehaviour
 
     [SerializeField] private List<bool> boxBought = new List<bool>();
     [SerializeField] public List<int> skinNumber = new List<int>();
+    [SerializeField] private PopUp popUp;
 
     
 
@@ -56,6 +57,10 @@ public class ShopScript : MonoBehaviour
             SaverJson.Instance.SaveToJson();
 
 
+        }
+        else
+        {
+            popUp.LowMoney();
         }
     }
 

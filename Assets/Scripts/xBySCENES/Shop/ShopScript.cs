@@ -71,10 +71,6 @@ public class ShopScript : MonoBehaviour
 
         Database.boxBought[boxNumber] = true;
         SaverJson.Instance.SaveToJson();
-        
-        
-
-        
     }
     
     
@@ -90,7 +86,7 @@ public class ShopScript : MonoBehaviour
     
 
 
-    //(PlayerPrefs.GetInt("coins")
+    
 
     void ButtonSound()
     {

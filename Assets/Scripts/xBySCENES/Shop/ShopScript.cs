@@ -13,7 +13,7 @@ public class ShopScript : MonoBehaviour
     [SerializeField] private List<TextMeshProUGUI> buttonsText = new List<TextMeshProUGUI>();
 
     [SerializeField] private List<bool> boxBought = new List<bool>();
-    [SerializeField] public List<int> skinNumber = new List<int>();
+    [SerializeField] public List<int> skinNumber = new List<int>(); //SkinNumber == additional number(skinNumber, numberOfCoins...)
     [SerializeField] private PopUp popUp;
 
     
@@ -64,8 +64,16 @@ public class ShopScript : MonoBehaviour
         }
     }
 
-    public void BuyCoins(int boxNumber, int coinsNumber)
+    public void BuyCoins(int boxNumber)
     {
+        int coins = skinNumber[boxNumber];
+        PlayerPrefs.SetInt("coins", PlayerPrefs.GetInt("coins") + coins);
+
+        Database.boxBought[boxNumber] = true;
+        SaverJson.Instance.SaveToJson();
+        
+        
+
         
     }
     

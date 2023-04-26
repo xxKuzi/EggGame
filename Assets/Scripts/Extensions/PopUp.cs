@@ -97,7 +97,6 @@ public class PopUp : MonoBehaviour
     }
     public void LowMoney()
     {
-        Debug.Log("LowMoney");
         ActiveCanvas();
         headline.text = "Not enough Money";
         message.text = "You do not have enought money";
@@ -161,9 +160,7 @@ public class PopUp : MonoBehaviour
         CloseWindow();
         if(gIndex == "buySkin")
         {
-            Debug.Log(boxNumber);
             shopScript.BuySkin(boxNumber);
-            Debug.Log("BuySkin");
         }
         
 

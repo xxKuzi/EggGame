@@ -8,7 +8,11 @@ public class ReviewScript : MonoBehaviour
 {
     [SerializeField] private PopUp popUp;
     [SerializeField] private SkinList skinList;
-    
+
+    private void Awake()
+    {
+        Debug.Log("bagr");
+    }
 
     private void Start()
     {

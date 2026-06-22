@@ -1,0 +1,14 @@
+{
+    "skinUnlocked": [
+        true,
+        false,
+        true
+    ],
+    "boxBought": [
+        false,
+        false,
+        true,
+        false,
+        false
+    ]
+}

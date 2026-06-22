@@ -10,32 +10,25 @@ public class PlayerMovement : MonoBehaviour
     
     [SerializeField] GameObject player;
     [HideInInspector] public Rigidbody2D rb;
-
-    
-    [HideInInspector] float jumpForce = 25;
+    float jumpForce = 25;
     float defJumpForce;    
     [HideInInspector] public float defGravitation = 40;
     private float move;
     [HideInInspector] public float gravity;
     bool isJump = false;
-    
     int timeForceJump = 5;
     [HideInInspector] public int shoeActive = 0;
-    
-
     [SerializeField] GameObject shoes;
-
     [SerializeField] public GameObject coinDetector;
     [SerializeField] public GameObject playerMagnet;
-
     int timeMagnet = 10;
     int magnetActive = 0;
-
     float moveSpeed = 20;
     [HideInInspector] public float moveX;
+    private float sideDistance;
 
     
-    private float sideDistance;
+    
     
 
 
@@ -52,7 +45,7 @@ public class PlayerMovement : MonoBehaviour
         coinDetector.SetActive(false);
         playerMagnet.SetActive(false);
         Application.targetFrameRate = 60;
-        
+
 
 
 
@@ -64,16 +57,16 @@ public class PlayerMovement : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        //move = Input.GetAxis("Horizontal");
         moveX = Input.acceleration.x * moveSpeed;
         rb.velocity = new Vector2(moveX, rb.velocity.y);
     }
     void Update()
     {
         
-
-        /*move = Input.GetAxis("Horizontal");
-        rb.velocity = new Vector2(move * moveSpeed, rb.velocity.y);*/
-
+        
+        
+        
         /*Input.GetKeyDown(KeyCode.Space) &&*/
         if (isJump == false)
         {
@@ -131,10 +124,12 @@ public class PlayerMovement : MonoBehaviour
             Destroy(collision.gameObject);
 
         }
+        
 
     }
 
     //FUNCTIONS   / BETTER NAME HERE
+    
 
     public void NormalGravity()
     {        

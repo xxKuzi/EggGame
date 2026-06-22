@@ -38,20 +38,18 @@ public class PlayerCollision : MonoBehaviour
     int defSecondRemain = 3;
     bool allowDeath = true;
     Vector2 diaPosition;
-    
     private int diaSpawnFrequency;
     private int diaSpawnCounter;
     private int diaRandomCounter;
     private Vector2 redBoxPosition;
-    
-    
     int number;
-
     public PopUp popUpScript;
-
     int offset = 10;
     float highestPosition = -2;
     bool cameraMove = true;
+
+    [SerializeField] ParticleSystem jumpPS;
+    
 
     private void Start()
     {
@@ -97,7 +95,7 @@ public class PlayerCollision : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
-
+            createDust();
             if (transform.position.y > score)
                 score = Mathf.RoundToInt(player.position.y);
             scoreText.text = "Score: " + score;
@@ -216,11 +214,16 @@ public class PlayerCollision : MonoBehaviour
         
     }
 
+    public void createDust()
+    {
+        jumpPS.Play();
+    }
     
     void Paralyzed()
     {        
         GetComponent<BoxCollider2D>().isTrigger = false;
     }
+    
     void Die()
     {
         AudioManager.Instance.Play("Death");

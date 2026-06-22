@@ -1,0 +1,41 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp-firstpass", "Assembly-CSharp-firstpass.csproj", "{f59d7de9-3da2-dd3a-f61a-b81ab05dc0c1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Assembly-CSharp.csproj", "{ff7b2269-9b82-7dfd-6cae-4d63ac158d36}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleFolderIcon", "SimpleFolderIcon.csproj", "{906a5666-6c19-d718-64b3-c4b5929ca2d2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoogleMobileAds.Editor", "GoogleMobileAds.Editor.csproj", "{26b1cfe2-8c42-308e-fa52-feb0e0588c55}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp-firstpass", "Assembly-CSharp-firstpass.Player.csproj", "{6aa0d4b6-bacb-18d5-0589-33d560632554}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Assembly-CSharp.Player.csproj", "{6d0df7ba-c0ad-db94-b35d-7b8dad809d8d}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp-Editor-firstpass", "Assembly-CSharp-Editor-firstpass.csproj", "{cd7d8d7b-f882-bb5d-001a-60c134e79529}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{f59d7de9-3da2-dd3a-f61a-b81ab05dc0c1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{f59d7de9-3da2-dd3a-f61a-b81ab05dc0c1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ff7b2269-9b82-7dfd-6cae-4d63ac158d36}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ff7b2269-9b82-7dfd-6cae-4d63ac158d36}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{906a5666-6c19-d718-64b3-c4b5929ca2d2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{906a5666-6c19-d718-64b3-c4b5929ca2d2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{26b1cfe2-8c42-308e-fa52-feb0e0588c55}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{26b1cfe2-8c42-308e-fa52-feb0e0588c55}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6aa0d4b6-bacb-18d5-0589-33d560632554}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6aa0d4b6-bacb-18d5-0589-33d560632554}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6d0df7ba-c0ad-db94-b35d-7b8dad809d8d}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6d0df7ba-c0ad-db94-b35d-7b8dad809d8d}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{cd7d8d7b-f882-bb5d-001a-60c134e79529}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{cd7d8d7b-f882-bb5d-001a-60c134e79529}.Debug|Any CPU.Build.0 = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -5,7 +5,7 @@
 
 💡 **Note:** Built in 2022. Back before AI, when figuring out an one obscure bug could easily take a whole afternoon :)
 
-![EggGame screenshot](./Assets/egg_game_gameplay.png)
+<img src="./Assets/egg_game_gameplay.png" width="400">
 
 ---
 

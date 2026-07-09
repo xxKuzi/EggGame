@@ -2,9 +2,10 @@
 
 > My first larger project — basically a Pou minigame on steroids. It blends responsive, tilt-controlled 2D physics with an addictive progression loop.
 
-💡 **Note:** Built in 2022 without any AI assistance. Programmed, designed, and animated entirely by hand.
 
-![EggGame screenshot](./screenshot.png)
+💡 **Note:** Built in 2022. Back before AI, when figuring out an one obscure bug could easily take a whole afternoon :)
+
+![EggGame screenshot](./Assets/egg_game_gameplay.png)
 
 ---
 
@@ -18,7 +19,6 @@
 - **Rewarded Ads** integrated via Google Mobile Ads SDK (AdMob) to give players extra coins or lives
 - **Legacy** — Originally published on Google Play (later removed due to evolving platform policy updates)
 
-![EggGame gameplay](./gameplay.png)
 <br><br>
 
 ## 🧰 Tech Stack

@@ -34,7 +34,7 @@
 
 ```text
 Assets/
- ├─ Animations/      # Hand-drawn character & item animations
+ ├─ Animations/      # custom designed character & item animations
  ├─ Prefabs/         # Reusable game objects (power-ups, platforms)
  ├─ Scenes/          # Main Menu, Shop, Game Level
  ├─ Scripts/         # C# logic (Physics, AdMob, JSON save/load)

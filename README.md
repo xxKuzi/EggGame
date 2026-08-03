@@ -1,41 +1,47 @@
-# EggGame
+<h1 align="center">Egg Game</h1>
+<p align="center"><strong>A tilt-controlled jumper about an egg with a face, built in Unity.</strong></p>
 
-> My first larger project — basically a Pou minigame on steroids. It blends responsive, tilt-controlled 2D physics with an addictive progression loop.
+<p align="center">
+  <img src="./Assets/egg_game_gameplay.png" alt="Egg Game gameplay showing the egg character, a jump-boosting shoe power-up, and a coin magnet" width="45%">
+  <img src="./Assets/egg_game_screenshot.jpg" alt="Egg Game running on a real device with an unlocked skin and a coin pickup" width="45%">
+</p>
 
+## What it is
 
-💡 **Note:** Built in 2022. Back before AI, when figuring out an one obscure bug could easily take a whole afternoon :)
+My first larger project — basically Pou's jump minigame taken far more
+seriously than it needed to be. Tilt the phone, the egg drifts left and
+right, and you climb as high as you can before missing a platform. Built in
+2022, entirely by hand, no AI in the loop — figuring out one obscure physics
+bug back then could eat a whole afternoon.
 
-<img src="./Assets/egg_game_gameplay.png" width="200">
+It was live on Google Play for a while and later pulled as store policy
+around ad SDKs and permissions moved on without it.
 
----
+## Features
 
-## ✨ Features
+- **Tilt controls** — the accelerometer steers the character, no buttons
+- **Screen wrapping** — cross one edge, appear on the other, keeps the climb going
+- **Power-ups** — jump-boosting shoes, coin-attracting magnets
+- **15 unlockable skins** via a mystery-box system
+- **Local progression** — shop state and stats saved/loaded with `JsonUtility`, no backend
+- **Rewarded ads** (AdMob) for extra coins or an extra life
 
-- **Accelerometer Controls** seamlessly guide the jumping character horizontally via device tilt
-- **Screen-wrapping mechanics** to keep gameplay fluid when players cross screen borders
-- **Dynamic power-ups** including jump-boosting shoes and coin-attracting magnets
-- **Unlockable Customization** featuring a mystery box system to unlock up to 15 unique skins
-- **Local Progression** automatically serializes and loads shop data and player stats via JSON
-- **Rewarded Ads** integrated via Google Mobile Ads SDK (AdMob) to give players extra coins or lives
-- **Legacy** — Originally published on Google Play (later removed due to evolving platform policy updates)
+## Tech stack
 
-<br><br>
+- **Unity** (2D)
+- **C#**
+- Unity's 2D physics + accelerometer input
+- `JsonUtility` for local save/load
+- Google Mobile Ads SDK (AdMob)
+- TextMesh Pro, PlayerPrefs, Particle System
 
-## 🧰 Tech Stack
+## Running it locally
 
-- **Unity** (2D Game Engine)
-- **C#** 
-- **Unity 2D Physics & Accelerometer API**
-- **JsonUtility** (Local Data Serialization)
-- **Google Mobile Ads SDK** (AdMob Monetization)
-  <br><br>
+Open the project folder in **Unity Hub**, then open
+`Assets/Scenes/Game.unity` and hit Play. No build server, no env vars — the
+AdMob SDK will just log test warnings without a real ad unit ID configured.
 
-## 🗂️ Project Structure (example)
+## License
 
-```text
-Assets/
- ├─ Animations/      # custom designed character & item animations
- ├─ Prefabs/         # Reusable game objects (power-ups, platforms)
- ├─ Scenes/          # Main Menu, Shop, Game Level
- ├─ Scripts/         # C# logic (Physics, AdMob, JSON save/load)
- └─ Sprites/         # 2D artwork and UI elements
+No LICENSE file is committed to this repo. Shared for portfolio and viewing
+purposes — add a LICENSE if you want the terms explicit.

@@ -2,8 +2,8 @@
 <p align="center"><strong>A tilt-controlled jumper about an egg with a face, built in Unity.</strong></p>
 
 <p align="center">
-  <img src="./Assets/egg_game_gameplay.png" alt="Egg Game gameplay showing the egg character, a jump-boosting shoe power-up, and a coin magnet" width="45%">
-  <img src="./Assets/egg_game_screenshot.jpg" alt="Egg Game running on a real device with an unlocked skin and a coin pickup" width="45%">
+  <img src="./Assets/egg_game_gameplay.png" alt="Egg Game gameplay showing the egg character, a jump-boosting shoe power-up, and a coin magnet" height="500px">
+  <img src="./Assets/egg_game_screenshot.jpg" alt="Egg Game running on a real device with an unlocked skin and a coin pickup" height="500px">
 </p>
 
 ## What it is
@@ -23,7 +23,7 @@ around ad SDKs and permissions moved on without it.
 - **Screen wrapping** — cross one edge, appear on the other, keeps the climb going
 - **Power-ups** — jump-boosting shoes, coin-attracting magnets
 - **15 unlockable skins** via a mystery-box system
-- **Local progression** — shop state and stats saved/loaded with `JsonUtility`, no backend
+- **Local progression** — shop state and stats saved/loaded with `JsonUtility`
 - **Rewarded ads** (AdMob) for extra coins or an extra life
 
 ## Tech stack

@@ -51,5 +51,5 @@ AdMob SDK will just log test warnings without a real ad unit ID configured.
 
 ## License
 
-No LICENSE file is committed to this repo. Shared for portfolio and viewing
-purposes — add a LICENSE if you want the terms explicit.
+
+This repository is shared for portfolio and viewing purposes only. You may clone and run the project locally solely to evaluate it. However, no permission is granted to use the code in other projects, modify it, or distribute it. See [LICENSE](./LICENSE).

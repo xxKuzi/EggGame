@@ -1,10 +1,18 @@
 <h1 align="center">Egg Game</h1>
+
+<br>
+
 <p align="center"><strong>A tilt-controlled jumper about an egg with a face, built in Unity.</strong></p>
 
+
+
 <p align="center">
+  <img src="./Assets/egg_game_menu.png" alt="Egg Game running on a real device with an unlocked skin and a coin pickup" height="500px">
   <img src="./Assets/egg_game_gameplay.png" alt="Egg Game gameplay showing the egg character, a jump-boosting shoe power-up, and a coin magnet" height="500px">
-  <img src="./Assets/egg_game_screenshot.jpg" alt="Egg Game running on a real device with an unlocked skin and a coin pickup" height="500px">
+  
 </p>
+
+<br>
 
 ## What it is
 

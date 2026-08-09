@@ -57,3 +57,10 @@ AdMob SDK will just log test warnings without a real ad unit ID configured.
 
 
 MIT — see [LICENSE](./LICENSE). Use it, copy it, change it, ship it, sell it. The only condition is that the copyright notice and license text ride along, and there is no warranty.
+
+That covers my code. Like most Unity projects, this one vendors its
+dependencies into `Assets/` — the Google Mobile Ads SDK
+(`Assets/GoogleMobileAds/`, `Assets/Plugins/Android/googlemobileads-unity.aar`)
+and the External Dependency Manager
+(`Assets/Plugins/ExternalDependencyManager/`) are Google's, and they keep their
+own licenses.

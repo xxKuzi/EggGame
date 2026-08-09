@@ -4,6 +4,10 @@
 
 <p align="center"><strong>A tilt-controlled jumper about an egg with a face, built in Unity.</strong></p>
 
+<p align="center">
+  <a href="./LICENSE"><img src="https://img.shields.io/badge/License-MIT-green.svg" alt="License: MIT"></a>
+</p>
+
 
 
 <p align="center">
@@ -52,4 +56,4 @@ AdMob SDK will just log test warnings without a real ad unit ID configured.
 ## License
 
 
-This repository is shared for portfolio and educational viewing purposes only. You are welcome to clone and execute the project locally to evaluate how it works. However, no permission is granted to modify, redistribute, or incorporate this code into other repositories or software. See [LICENSE](./LICENSE).
+MIT — see [LICENSE](./LICENSE). Use it, copy it, change it, ship it, sell it. The only condition is that the copyright notice and license text ride along, and there is no warranty.
